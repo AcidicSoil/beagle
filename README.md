@@ -39,15 +39,23 @@ claude plugin marketplace update existential-birds && claude plugin update <plug
 
 ### Other Agents
 
-Use the [skills CLI](https://skills.sh/docs/cli) to install beagle skills for other AI agents:
+To install Beagle into `~/.agents/skills/` for Codex/OpenAI agents:
+
+```bash
+git clone https://github.com/existential-birds/beagle.git
+cd beagle
+./install-codex-skills.sh
+```
+
+This creates or updates symlinks under `~/.agents/skills/` for each maintained Beagle plugin.
+
+To download skills for non-Codex agents with the [skills CLI](https://skills.sh/docs/cli):
 
 ```bash
 npx skills add existential-birds/beagle
 ```
 
-This downloads the skills and configures them for your agent.
-
-**Codex users:** Link each plugin into `~/.agents/skills/` — see [.codex/INSTALL.md](.codex/INSTALL.md) for setup instructions.
+For manual setup details and Windows examples, see [.codex/INSTALL.md](.codex/INSTALL.md).
 
 ## Plugins
 

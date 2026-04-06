@@ -1,18 +1,20 @@
 # Beagle for Codex
 
-Install Beagle by linking each plugin's `skills/` directory into Codex's skill path.
+Install Beagle into Codex's skill path with the repo helper script.
 
 ```bash
-repo=/path/to/beagle
-dest="$HOME/.agents/skills"
-mkdir -p "$dest"
-
-for plugin in beagle-ai beagle-analysis beagle-core beagle-docs beagle-elixir beagle-go beagle-ios beagle-python beagle-react beagle-rust beagle-testing; do
-  ln -sfn "$repo/plugins/$plugin/skills" "$dest/$plugin"
-done
+./install-codex-skills.sh
 ```
 
-Example:
+By default this creates or updates symlinks under `~/.agents/skills/` for each maintained Beagle plugin.
+
+To use a different destination:
+
+```bash
+BEAGLE_SKILLS_DEST=/some/other/skills ./install-codex-skills.sh
+```
+
+Manual single-plugin example:
 
 ```bash
 ln -sfn "/path/to/beagle/plugins/beagle-core/skills" "$HOME/.agents/skills/beagle-core"
@@ -21,6 +23,7 @@ ln -sfn "/path/to/beagle/plugins/beagle-core/skills" "$HOME/.agents/skills/beagl
 Windows junction example:
 
 ```bat
+REM Run from the Beagle checkout, or replace the source path below.
 mklink /J "%USERPROFILE%\.agents\skills\beagle-core" "C:\path\to\beagle\plugins\beagle-core\skills"
 ```
 
